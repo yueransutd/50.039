@@ -1,0 +1,45 @@
+<MainScreen>:
+    name: 'main'
+
+    BoxLayout:
+        BoxLayout:
+            orientation: 'vertical'
+
+            BoxLayout:
+                size_hint_y: None
+                height: 35
+
+                Button:
+                    text: 'Icon View'
+                    on_press: fc.view_mode = 'icon'
+                Button:
+                    text: 'List View'
+                    on_press: fc.view_mode = 'list'
+
+            FileChooser:
+                id: fc
+                FileChooserIconLayout
+                FileChooserListLayout
+
+            BoxLayout:
+                orientation: 'vertical'
+                size_hint_y: None
+                height: 35
+                
+                Button:
+                    text: 'Predict on image'
+                    on_release: root.selected(fc.selection)
+
+        BoxLayout:
+            orientation: 'vertical'
+
+            Image:
+                id: img
+
+            BoxLayout:
+                size_hint_y: None
+                height: 100
+                Label:
+                    id: pred
+                    text:'The prediction of selected image\nwill be displayed here'
+                    font_size: 18
